@@ -1,15 +1,3 @@
-FROM openjdk:%JAVA%
-
-ENV PATH /usr/local/tomee/bin:$PATH
-RUN mkdir -p /usr/local/tomee
-
-WORKDIR /usr/local/tomee
-
-%KEY_SECTION%
-
-ENV TOMEE_VER %VERSION%
-ENV TOMEE_BUILD %FLAVOR%
-
 RUN set -x \
   && curl -fSL https://dist.apache.org/repos/dist/release/tomee/tomee-${TOMEE_VER}/apache-tomee-${TOMEE_VER}-${TOMEE_BUILD}.tar.gz.asc -o tomee.tar.gz.asc \
   && curl -fSL https://dist.apache.org/repos/dist/release/tomee/tomee-${TOMEE_VER}/apache-tomee-${TOMEE_VER}-${TOMEE_BUILD}.tar.gz.sha512 -o tomee.tar.gz.sha512 \
